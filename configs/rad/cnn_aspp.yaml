@@ -1,0 +1,40 @@
+project:
+  name: CNN_ASPP_RAD
+  experiment_name: CNN_ASPP_RAD
+data:
+  input_mode: rad
+  input_dir: ./data/Input/RAD/
+  target_dir: ./data/Target/
+  fold_csv: ./data/Input/all_patches_with_folds.csv
+  norm_param_dir: ./data/Norm_parameters/RAD/
+  norm_files:
+    min: min.npy
+    max: max.npy
+    mean: mean.npy
+    std: std.npy
+  normalization: minmax
+train:
+  n_folds: 5
+  epochs: 500
+  batch_size: 8
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  max_grad_norm: 2.0
+  patience: 200
+  num_workers: 4
+  seed: 1004
+  amp: true
+model:
+  arch: cnn_aspp
+  in_channels: 49
+  dropout_rate: 0.5
+  atrous_rates:
+  - 3
+  - 6
+  - 12
+  - 18
+  - 32
+  activation: relu
+logging:
+  use_wandb: true
+  save_root: ./outputs

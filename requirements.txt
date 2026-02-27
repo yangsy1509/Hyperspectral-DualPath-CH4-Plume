@@ -1,0 +1,13 @@
+geopandas==1.0.1
+matplotlib==3.10.1
+matplotlib-inline==0.1.7
+numpy==1.26.4
+pandas==2.2.3
+PyYAML==6.0.2
+scikit-learn==1.6.1
+seaborn==0.13.2
+segmentation_models_pytorch @ git+https://github.com/qubvel/segmentation_models.pytorch@9fb73ab8cfa2ab2906efa9faa28647c9d5a6dc1f
+git+https://github.com/CompVis/taming-transformers.git@3ba01b241669f5ade541ce990f7650a3b8f65318#egg=taming_transformers
+tqdm==4.67.1
+transformers==4.55.0
+wandb==0.19.9

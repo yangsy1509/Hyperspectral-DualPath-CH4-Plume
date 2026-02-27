@@ -1,0 +1,71 @@
+project:
+  name: SegFormer_RAD
+  experiment_name: SegFormer_RAD
+data:
+  input_mode: rad
+  input_dir: ./data/Input/RAD/
+  target_dir: ./data/Target/
+  fold_csv: ./data/Input/all_patches_with_folds.csv
+  norm_param_dir: ./data/Norm_parameters/RAD/
+  norm_files:
+    min: min.npy
+    max: max.npy
+    mean: mean.npy
+    std: std.npy
+  normalization: minmax
+train:
+  n_folds: 5
+  epochs: 500
+  batch_size: 8
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  max_grad_norm: 2.0
+  patience: 80
+  num_workers: 4
+  seed: 1004
+  amp: true
+model:
+  arch: segformer
+  in_channels: 49
+  num_labels: 1
+  segformer_config:
+    depths:
+    - 3
+    - 4
+    - 6
+    - 3
+    hidden_sizes:
+    - 64
+    - 128
+    - 320
+    - 512
+    num_attention_heads:
+    - 1
+    - 2
+    - 5
+    - 8
+    mlp_ratios:
+    - 4
+    - 4
+    - 4
+    - 4
+    sr_ratios:
+    - 8
+    - 4
+    - 2
+    - 1
+    patch_sizes:
+    - 7
+    - 3
+    - 3
+    - 3
+    strides:
+    - 4
+    - 2
+    - 2
+    - 2
+    decoder_hidden_size: 256
+    drop_path_rate: 0.2
+logging:
+  use_wandb: true
+  save_root: ./outputs
