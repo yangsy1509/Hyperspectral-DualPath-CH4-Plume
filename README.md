@@ -15,5 +15,7 @@ pip install -r requirements.txt
 ## Train/Evaluate/Inference
 ### Example
 python train.py --config configs/enh/cnn_aspp_test.yaml
+```bash
 python evaluate.py --config configs/enh/cnn_aspp_test.yaml
+```bash
 python inference.py --config configs/enh/cnn_aspp_test.yaml
